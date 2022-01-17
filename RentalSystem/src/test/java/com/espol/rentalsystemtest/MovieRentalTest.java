@@ -28,8 +28,15 @@ public class MovieRentalTest {
     public static void tearDownClass() {
     }
     
+MovieRental uno, dos, tres, cuatro;
+Movie mulan;
     @Before
     public void setUp() {
+mulan = new Movie("Mulan", Movie.CHILDRENS);
+uno = new MovieRental(mulan, 3);
+dos= new MovieRental(mulan, -5);
+tres= null;
+cuatro=new MovieRental(null, 4);
     }
     
     @After
@@ -41,27 +48,66 @@ public class MovieRentalTest {
      */
     @Test
     public void testGetDaysRented() {
-        System.out.println("getDaysRented");
-        MovieRental instance = null;
-        int expResult = 0;
-        int result = instance.getDaysRented();
+        System.out.println("testGetDaysRented");
+       
+        int expResult = 3;
+        int result = uno.getDaysRented();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    @Test
+    public void testGetDaysRentedDiasNegativos() {
+        try{
+            System.out.println("testGetDaysRentedDiasNegativos");
+            int result = dos.getDaysRented();
+            fail("No tiro excepcion cuando debia");
+        }catch(Exception ex){
+            System.err.println("Si tiro el error esperado");
+        }
     }
 
+    @Test
+    public void testGetDaysRentedNull() {
+        try{
+            System.out.println("testGetDaysRentedNull");
+            int result = tres.getDaysRented();
+            fail("No tiro excepcion cuando debia");
+        }catch(Exception ex){
+            System.err.println("Si tiro el error esperado");
+        }
+    }
+    @Test
+    public void testGetDaysRentedPeliNull() {
+        System.out.println("testGetDaysRentedPeliNull");
+        int expResult = 4;
+        int result = cuatro.getDaysRented();
+        assertEquals(expResult, result);
+    }
     /**
      * Test of getMovie method, of class MovieRental.
      */
     @Test
     public void testGetMovie() {
         System.out.println("getMovie");
-        MovieRental instance = null;
-        Movie expResult = null;
-        Movie result = instance.getMovie();
+        Movie expResult = mulan;
+        Movie result = uno.getMovie();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
+    public void testGetMovieNula() {
+        try{
+            System.out.println("getMovie");
+            Movie result = tres.getMovie();
+            fail("No tiro excepcion cuando debia");
+        }catch(Exception ex){
+            System.err.println("Si tiro el error esperado");
+        }
+    }
+    public void testGetMoviePeliNula() {
+        try{
+            System.out.println("testGetMoviePeliNula");
+            Movie result = cuatro.getMovie();
+        }catch(Exception ex){
+            System.err.println("Si tiro el error esperado");
+        }
+    }
 }

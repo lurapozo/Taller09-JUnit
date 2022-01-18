@@ -16,29 +16,30 @@ import static org.junit.Assert.*;
  * @author lurapozo
  */
 public class MovieRentalTest {
-    
+
     public MovieRentalTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
-MovieRental uno, dos, tres, cuatro;
-Movie mulan;
+
+    MovieRental uno, dos, tres, cuatro;
+    Movie mulan;
+
     @Before
     public void setUp() {
-mulan = new Movie("Mulan", Movie.CHILDRENS);
-uno = new MovieRental(mulan, 3);
-dos= new MovieRental(mulan, -5);
-tres= null;
-cuatro=new MovieRental(null, 4);
+        mulan = new Movie("Mulan", Movie.CHILDRENS);
+        uno = new MovieRental(mulan, 3);
+        dos = new MovieRental(mulan, -5);
+        tres = null;
+        cuatro = new MovieRental(null, 4);
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -49,32 +50,35 @@ cuatro=new MovieRental(null, 4);
     @Test
     public void testGetDaysRented() {
         System.out.println("testGetDaysRented");
-       
+
         int expResult = 3;
         int result = uno.getDaysRented();
         assertEquals(expResult, result);
     }
+
     @Test
     public void testGetDaysRentedDiasNegativos() {
-        try{
-            System.out.println("testGetDaysRentedDiasNegativos");
+        System.out.println("testGetDaysRentedDiasNegativos");
+        try {
             int result = dos.getDaysRented();
             fail("No tiro excepcion cuando debia");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
 
     @Test
     public void testGetDaysRentedNull() {
-        try{
-            System.out.println("testGetDaysRentedNull");
+        System.out.println("testGetDaysRentedNull");
+        try {
+
             int result = tres.getDaysRented();
             fail("No tiro excepcion cuando debia");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
+
     @Test
     public void testGetDaysRentedPeliNull() {
         System.out.println("testGetDaysRentedPeliNull");
@@ -82,6 +86,7 @@ cuatro=new MovieRental(null, 4);
         int result = cuatro.getDaysRented();
         assertEquals(expResult, result);
     }
+
     /**
      * Test of getMovie method, of class MovieRental.
      */
@@ -92,21 +97,22 @@ cuatro=new MovieRental(null, 4);
         Movie result = uno.getMovie();
         assertEquals(expResult, result);
     }
-    
+
     public void testGetMovieNula() {
-        try{
-            System.out.println("getMovie");
+        System.out.println("getMovie");
+        try {
             Movie result = tres.getMovie();
             fail("No tiro excepcion cuando debia");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
+
     public void testGetMoviePeliNula() {
-        try{
-            System.out.println("testGetMoviePeliNula");
+        System.out.println("testGetMoviePeliNula");
+        try {
             Movie result = cuatro.getMovie();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }

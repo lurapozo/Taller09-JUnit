@@ -16,33 +16,34 @@ import static org.junit.Assert.*;
  * @author lurapozo
  */
 public class VideoGameRentalTest {
-    
+
     public VideoGameRentalTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
-Object littleBigPlanet, halo, smash, lol;
-VideoGameRental one, two, three, four, five;
+
+    Object littleBigPlanet, halo, smash, lol;
+    VideoGameRental one, two, three, four, five;
+
     @Before
     public void setUp() {
-    littleBigPlanet = new Ps3Game("Little Big Planet");
-    halo = new Xbox360Game("Halo");
-    smash= new WiiGame("Smash");
-    lol=new Object();
-    one=new VideoGameRental(littleBigPlanet, 5, true);
-    two=new VideoGameRental(halo, 5, false);
-    three=new VideoGameRental(smash, -5, true);
-    four=new VideoGameRental(lol, 5, true);
-    five=null;
+        littleBigPlanet = new Ps3Game("Little Big Planet");
+        halo = new Xbox360Game("Halo");
+        smash = new WiiGame("Smash");
+        lol = new Object();
+        one = new VideoGameRental(littleBigPlanet, 5, true);
+        two = new VideoGameRental(halo, 5, false);
+        three = new VideoGameRental(smash, -5, true);
+        four = new VideoGameRental(lol, 5, true);
+        five = null;
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -81,8 +82,9 @@ VideoGameRental one, two, three, four, five;
 
     @Test
     public void testGetDaysRentedNull() {
+        System.out.println("testGetDaysRentedNull");
         try {
-            System.out.println("testGetDaysRentedNull");
+
             int result = five.getDaysRented();
             fail("No tiro excepcion cuando debia");
         } catch (Exception ex) {
@@ -109,24 +111,26 @@ VideoGameRental one, two, three, four, five;
 
     @Test
     public void testGetVideoGameJuegoEsObjeto() {
+        System.out.println("testGetVideoGameJuegoEsObjeto");
         try {
-            System.out.println("testGetVideoGameJuegoEsObjeto");
             Object result = four.getVideoGame();
             fail("No tiro excepcion cuando debia");
         } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
+
     @Test
     public void testGetVideoGameNull() {
+        System.out.println("testGetVideoGameNull");
         try {
-            System.out.println("testGetVideoGameNull");
             Object result = five.getVideoGame();
             fail("No tiro excepcion cuando debia");
         } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
+
     /**
      * Test of getCharge method, of class VideoGameRental.
      */
@@ -134,82 +138,93 @@ VideoGameRental one, two, three, four, five;
     public void testGetCharge() {
         System.out.println("getCharge");
         double result = one.getCharge();
-        assertTrue(result>4);
+        //assertTrue(result>4);
+        assertEquals(result, 40, 1);
         double result2 = two.getCharge();
-        assertTrue(result2>3.5);
+        //assertTrue(result2>3.5);
+        assertEquals(result2, 6, 1);
     }
 
     @Test
     public void testGetChargeDiasNegativos() {
-        try{
-            System.out.println("testGetChargeDiasNegativos");
+        System.out.println("testGetChargeDiasNegativos");
+        try {
+
             double result = three.getCharge();
             fail("No tiro excepcion cuando debia");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
 
     @Test
     public void testGetChargeJuegoNulo() {
-        try{
-            System.out.println("testGetChargeJuegoNulo");
+        System.out.println("testGetChargeJuegoNulo");
+        try {
+
             double result = four.getCharge();
             fail("No tiro excepcion cuando debia");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
 
     @Test
     public void testGetChargeNulo() {
-        try{
-            System.out.println("testGetChargeNulo");
+        System.out.println("testGetChargeNulo");
+        try {
+
             double result = five.getCharge();
             fail("No tiro excepcion cuando debia");
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
     }
+
     /**
      * Test of getFrequentRenterPoints method, of class VideoGameRental.
      */
     @Test
     public void testGetFrequentRenterPoints() {
         System.out.println("getFrequentRenterPoints");
-        int expResult = 2+1;
+        int expResult = 2 + 1;
         int result = one.getFrequentRenterPoints();
         assertEquals(expResult, result);
         int expResult2 = 2;
         int result2 = two.getFrequentRenterPoints();
         assertEquals(expResult2, result2);
     }
+
     @Test
     public void testGetFrequentRenterPointsDiasNegativos() {
+        System.out.println("testGetFrequentRenterPointsDiasNegativos");
         try {
-            System.out.println("testGetFrequentRenterPointsDiasNegativos");
+
             int result = three.getFrequentRenterPoints();
         } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
-    } 
+    }
 
     @Test
     public void testGetFrequentRenterPointsJuegoNull() {
+        System.out.println("testGetFrequentRenterPointsJuegoNull");
         try {
-            System.out.println("testGetFrequentRenterPointsJuegoNull");
+
             int result = four.getFrequentRenterPoints();
         } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
-    } 
+    }
+
     @Test
     public void testGetFrequentRenterPointsNull() {
+        System.out.println("testGetFrequentRenterPointsNull");
         try {
-            System.out.println("testGetFrequentRenterPointsNull");
+
             int result = five.getFrequentRenterPoints();
         } catch (Exception ex) {
             System.err.println("Si tiro el error esperado");
         }
-    } 
+    }
 }
